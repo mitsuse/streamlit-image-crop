@@ -12,9 +12,9 @@ pip install streamlit-image-crop
 
 ## Example
 
-Please see [example.py](example.py).
+Please see [example.py](https://github.com/mitsuse/streamlit-image-crop/blob/master/example.py).
 
 ## License
 
 Streamlit Image Crop is licensed under the ISC license.
-Please read [LICENSE](LICENSE) for the detail.
+Please read [LICENSE](https://github.com/mitsuse/streamlit-image-crop/blob/master/LICENSE) for the detail.
