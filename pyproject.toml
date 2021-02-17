@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "streamlit-image-crop"
+version = "0.1.0"
+description = "A Streamlit component based on React Image Crop."
+readme = "README.md"
+authors = ["Tomoya Kose <tomoya@mitsuse.jp>"]
+homepage = "https://github.com/mitsuse/streamlit-image-crop"
+repository = "https://github.com/mitsuse/streamlit-image-crop"
+license = "ISC"
+keywords = [
+    "streamlit",
+]
+packages = [
+    { include = "streamlit_image_crop" }
+]
+include = [
+    "streamlit_image_crop/frontend/build",
+]
+exclude = [
+    "streamlit_image_crop/frontend/public",
+    "streamlit_image_crop/frontend/src",
+    "streamlit_image_crop/frontend/tsconfig.json",
+    "streamlit_image_crop/frontend/package.json",
+    "streamlit_image_crop/frontend/package-lock.json",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+streamlit = "^0.76.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.800"
+black = "^20.8b1"
+flake8 = "^3.8.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
