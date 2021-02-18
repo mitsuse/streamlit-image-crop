@@ -52,9 +52,6 @@ def main() -> None:
         max_value=1000,
     )
 
-    keep_selection = st.sidebar.checkbox("Keep selection", value=False)
-    disabled = st.sidebar.checkbox("disabled", value=False)
-    locked = st.sidebar.checkbox("locked", value=False)
     rule_of_thirds = st.sidebar.checkbox("Rule of Thirds", value=False)
     circular_crop = st.sidebar.checkbox("Circular Crop", value=False)
 
@@ -74,9 +71,6 @@ def main() -> None:
             min_height=min_height,
             max_width=max_width,
             max_height=max_height,
-            keep_selection=keep_selection,
-            disabled=disabled,
-            locked=locked,
             rule_of_thirds=rule_of_thirds,
             circular_crop=circular_crop,
         )
