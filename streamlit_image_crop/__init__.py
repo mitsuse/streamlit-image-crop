@@ -26,6 +26,7 @@ class Crop:
 def image_crop(
     image: Union[bytes, Image],
     crop: Optional[Crop] = None,
+    width_preview: Optional[int] = None,
     image_alt: Optional[str] = None,
     min_width: Optional[int] = None,
     min_height: Optional[int] = None,
@@ -76,9 +77,11 @@ def image_crop(
     else:
         image_ = open_image(BytesIO(image))
 
+    width, _ = image_.size
+
     src = image_to_url(
         image_,
-        width=500,
+        width=min(width, width_preview) if width_preview else width,
         clamp=False,
         channels="RGB",
         output_format="auto",
