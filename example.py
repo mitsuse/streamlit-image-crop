@@ -2,13 +2,17 @@ from __future__ import annotations
 
 import streamlit as st
 import streamlit_image_crop
+import typer
 from streamlit_image_crop import image_crop
 from streamlit_image_crop import Crop
 
-streamlit_image_crop._DEBUG = True
+app = typer.Typer()
 
 
-def main() -> None:
+@app.command()
+def main(debug: bool = typer.Option(False)) -> None:
+    streamlit_image_crop._DEBUG = debug
+
     st.title("React Image Crop")
 
     st.sidebar.header("Parameters")
@@ -82,4 +86,4 @@ def main() -> None:
         st.image(image_cropped)
 
 
-main()
+app(standalone_mode=False)
