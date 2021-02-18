@@ -12,7 +12,27 @@ pip install streamlit-image-crop
 
 ## Example
 
-Please see [example.py](https://github.com/mitsuse/streamlit-image-crop/blob/master/example.py).
+Try [example.py](https://github.com/mitsuse/streamlit-image-crop/blob/master/example.py).
+
+First, you need to install dependencies:
+
+```
+git clone https://github.com/mitsuse/streamlit-image-crop.git && cd streamlit-image-crop
+pip install poetry
+poetry install
+```
+
+Next, run `react-script start`:
+
+```
+cd streamlit-image-crop/frontend/ && npm run start
+```
+
+Finally, run the example:
+
+```
+poetry run streamlit run example.py
+```
 
 ## License
 
