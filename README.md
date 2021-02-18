@@ -22,7 +22,7 @@ pip install poetry
 poetry install
 ```
 
-Next, run `react-script start`:
+Next, run `react-scripts start`:
 
 ```
 cd streamlit-image-crop/frontend/ && npm run start
