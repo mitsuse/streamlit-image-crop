@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "streamlit-image-crop"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Streamlit component based on React Image Crop."
 readme = "README.md"
 authors = ["Tomoya Kose <tomoya@mitsuse.jp>"]
