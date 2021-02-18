@@ -32,11 +32,14 @@ def image_crop(
     min_height: Optional[int] = None,
     max_width: Optional[int] = None,
     max_height: Optional[int] = None,
-    keep_selection: Optional[bool] = None,
-    disabled: Optional[bool] = None,
-    locked: Optional[bool] = None,
+    # FIXME: Changing these properties, the component is rerendered unfortunately.
+    # ----
+    # keep_selection: Optional[bool] = None,
+    # disabled: Optional[bool] = None,
+    # locked: Optional[bool] = None,
     rule_of_thirds: Optional[bool] = None,
     circular_crop: Optional[bool] = None,
+    # ----
     key: Optional[str] = None,
 ) -> Optional[Image]:
     import dataclasses
@@ -106,11 +109,14 @@ def image_crop(
         minHeight=min_height,
         maxWidth=max_width,
         maxHeight=max_height,
-        keepSelection=keep_selection,
-        disabled=disabled,
-        locked=locked,
+        # FIXME: Changing these properties, the component is rerendered unfortunately.
+        # ----
+        keepSelection=None,
+        disabled=None,
+        locked=None,
         ruleOfThirds=rule_of_thirds,
         circularCrop=circular_crop,
+        # ----
         crop=crop_,
         key=key,
         default=default,
