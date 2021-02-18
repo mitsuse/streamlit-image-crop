@@ -47,7 +47,10 @@ def image_crop(
     from os import path
 
     import streamlit as st
+    from PIL.Image import composite as composite_image
+    from PIL.Image import new as new_image
     from PIL.Image import open as open_image
+    from PIL.ImageDraw import Draw
     from streamlit.components import v1 as components
     from streamlit.elements.image import image_to_url
 
@@ -134,4 +137,12 @@ def image_crop(
     if w_crop <= 0 or h_crop <= 0:
         return None
     else:
-        return image_.crop((x0, y0, x1, y1))
+        image_crop = image_.crop((x0, y0, x1, y1))
+        if circular_crop:
+            background = new_image("RGBA", (w_crop, h_crop), (0, 0, 0, 0))
+            mask = new_image("L", (w_crop, h_crop), 0)
+            draw = Draw(mask)
+            draw.ellipse((0, 0, w_crop, h_crop), fill="white")
+            image_crop = composite_image(image_crop, background, mask)
+
+        return image_crop
