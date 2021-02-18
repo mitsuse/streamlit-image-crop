@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Callable
 from typing import Optional
+from typing import Tuple
 from typing import Union
 
 from dataclasses import dataclass
@@ -10,7 +11,7 @@ from PIL.Image import Image
 
 
 _DEBUG = False
-_component_func: Any = None
+_impl: Optional[Tuple[Callable, Callable[[str], str]]] = None
 
 
 @dataclass(frozen=True)
@@ -41,22 +42,33 @@ def image_crop(
     from io import BytesIO
     from os import path
 
+    import streamlit as st
     from PIL.Image import open as open_image
     from streamlit.components import v1 as components
     from streamlit.elements.image import image_to_url
 
-    global _component_func
+    global _impl
 
-    if _component_func is None:
+    if _impl is None:
         if _DEBUG:
-            _component_func = components.declare_component(
-                "image_crop",
-                url="http://localhost:3001",
+            option_address = st.get_option("browser.serverAddress")
+            option_port = st.get_option("browser.serverPort")
+            _impl = (
+                components.declare_component(
+                    "image_crop",
+                    url="http://localhost:3001",
+                ),
+                lambda s: f"http://{option_address}:{option_port}" + s,
             )
         else:
-            _component_func = components.declare_component(
-                "image_crop",
-                path=path.join(path.dirname(path.abspath(__file__)), "frontend/build"),
+            _impl = (
+                components.declare_component(
+                    "image_crop",
+                    path=path.join(
+                        path.dirname(path.abspath(__file__)), "frontend/build"
+                    ),
+                ),
+                lambda s: s,
             )
 
     if isinstance(image, Image):
@@ -82,8 +94,10 @@ def image_crop(
         "y": 0.0,
     }
 
-    result = _component_func(
-        src=src,
+    component, build_url = _impl
+
+    result = component(
+        src=build_url(src),
         image_alt=image_alt,
         minWidth=min_width,
         minHeight=min_height,
