@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Fix the url of an image presented on the image cropper.
+
 ## 0.2.0
 
 - The component use the original size of image to preview on React Image Crop by default. If you need resizing the original image, pass `width_preview` to `image_crop`.
